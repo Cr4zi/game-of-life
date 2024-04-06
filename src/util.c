@@ -39,7 +39,7 @@ void setRandomValues(int** arr, int rows, int columns)
             random_val = rand() % 10;
 
             /* Just for 0 to appear more */
-            if(random_val < 7)
+            if(random_val < 8)
                 random_val = 0;
             else
                 random_val = 1;
