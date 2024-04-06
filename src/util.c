@@ -28,24 +28,28 @@ void setRandomValues(int** arr, int rows, int columns)
     int random_val = 0;
     /* Get current times with nanosecond */
     struct timespec ts;
-    clock_gettime(CLOCK_REALTIME, &ts);
+
+    timespec_get(&ts, TIME_UTC);
 
     /* Seed the random number with nanoseconds */
     srand((unsigned int)ts.tv_nsec);
+    printf("Row: %d\nColumns: %d\n", rows, columns);
 
     /* Change the array values */
     for(int i = 0; i < rows; i++) {
         for(int j = 0; j < columns; j++) {
+
             random_val = rand() % 10;
 
             /* Just for 0 to appear more */
-            if(random_val < 8)
+            if (random_val < 8)
                 random_val = 0;
             else
                 random_val = 1;
 
 
             arr[i][j] = random_val;
+            // printf("Arr[%d][%d] = %d ", i, j, arr[i][j]);
         }
     }
 }

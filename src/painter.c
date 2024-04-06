@@ -7,7 +7,7 @@ void drawWorld(int** world, int rows, int columns, int size)
     int currY = 0;
     for(int i = 0; i < columns; i++) {
         for(int j = 0; j < rows; j++) {
-            if(world[i][j] == 1)
+            if(world[j][i] == 1)
                 DrawRectangle(currX, currY, size, size, BLACK);
             currX += size;
         }

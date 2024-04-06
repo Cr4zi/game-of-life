@@ -1,5 +1,7 @@
 #include "raylib.h"
 
+#include <stdio.h>
+
 #include "../include/util.h"
 #include "../include/painter.h"
 
