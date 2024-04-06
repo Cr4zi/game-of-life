@@ -8,9 +8,9 @@
 
 #define WIDTH 1920
 #define HEIGHT 1080
-#define FPS 60
+#define FPS 15
 
-#define CELLS_RES_RATIO 10
+#define CELLS_RES_RATIO 20
 
 int main()
 {

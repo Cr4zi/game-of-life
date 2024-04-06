@@ -40,7 +40,7 @@ void setRandomValues(int** arr, int rows, int columns)
             random_val = rand() % 100;
 
             /* Just for 0 to appear more */
-            if (random_val < 95)
+            if (random_val < 90)
                 random_val = 0;
             else
                 random_val = 1;

@@ -19,12 +19,12 @@ void drawWorld(int** world, int rows, int columns, int size)
 void drawSeperators(int width, int height, int size)
 {
     /* Draw Rows Seperators */
-    for(int i = 0; i < width; i+= 10) {
+    for(int i = 0; i < width; i+= size) {
         DrawRectangle(i, 0, size, height, BLACK);
     }
 
     /* Draws Columns Seperators */
-    for(int i = 0; i < height; i += 10) {
+    for(int i = 0; i < height; i += size) {
         DrawRectangle(0, i, width, size, BLACK);
     }
 }
