@@ -23,6 +23,7 @@ void drawSeperators(int width, int height, int size)
         DrawRectangle(i, 0, size, height, BLACK);
     }
 
+    /* Draws Columns Seperators */
     for(int i = 0; i < height; i += 10) {
         DrawRectangle(0, i, width, size, BLACK);
     }

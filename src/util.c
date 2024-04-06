@@ -8,7 +8,7 @@ int** make2DArray(int rows, int columns)
 {
     int** arr = (int **)malloc(rows * sizeof(int*));
     for (int i = 0; i < rows; i++) {
-        arr[i] = (int *)malloc(columns * sizeof(int));
+        arr[i] = (int *)calloc(columns, sizeof(int));
     }
 
     return arr;
@@ -33,23 +33,42 @@ void setRandomValues(int** arr, int rows, int columns)
 
     /* Seed the random number with nanoseconds */
     srand((unsigned int)ts.tv_nsec);
-    printf("Row: %d\nColumns: %d\n", rows, columns);
 
     /* Change the array values */
     for(int i = 0; i < rows; i++) {
         for(int j = 0; j < columns; j++) {
-
-            random_val = rand() % 10;
+            random_val = rand() % 100;
 
             /* Just for 0 to appear more */
-            if (random_val < 8)
+            if (random_val < 95)
                 random_val = 0;
             else
                 random_val = 1;
 
 
             arr[i][j] = random_val;
-            // printf("Arr[%d][%d] = %d ", i, j, arr[i][j]);
+        }
+    }
+}
+
+
+void copyArrToArr(int** arr1, int** arr2, int rows, int columns)
+{
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < columns; j++) {
+            arr2[i][j] = arr1[i][j];
+        }
+    }
+}
+
+void swapTwoArrays(int** arr1, int** arr2, int rows, int columns)
+{
+    int temp = 0;
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < columns; j++) {
+            temp = arr1[i][j];
+            arr1[i][j] = arr2[i][j];
+            arr2[i][j] = temp;
         }
     }
 }
