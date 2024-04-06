@@ -5,6 +5,6 @@
 
 void drawWorld(int** world, int rows, int columns, int size);
 
-void drawSeperators(int width, int height, int size);
+void drawSeperators(int width, int height, int size, int spaces);
 
 #endif

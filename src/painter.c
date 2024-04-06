@@ -16,15 +16,15 @@ void drawWorld(int** world, int rows, int columns, int size)
     }
 }
 
-void drawSeperators(int width, int height, int size)
+void drawSeperators(int width, int height, int size, int spaces)
 {
     /* Draw Rows Seperators */
-    for(int i = 0; i < width; i+= size) {
+    for(int i = 0; i < width; i+= spaces) {
         DrawRectangle(i, 0, size, height, BLACK);
     }
 
     /* Draws Columns Seperators */
-    for(int i = 0; i < height; i += size) {
+    for(int i = 0; i < height; i += spaces) {
         DrawRectangle(0, i, width, size, BLACK);
     }
 }

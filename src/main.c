@@ -34,7 +34,7 @@ int main()
 		BeginDrawing();
 
 		ClearBackground(RAYWHITE);
-		drawSeperators(WIDTH, HEIGHT, 1);
+		drawSeperators(WIDTH, HEIGHT, 1, CELLS_RES_RATIO);
 		drawWorld(world, rows, columns, CELLS_RES_RATIO);
 
 		newGeneration(next, rows, columns);
