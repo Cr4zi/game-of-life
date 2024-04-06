@@ -1,6 +1,7 @@
 #include "raylib.h"
 
 #include "../include/util.h"
+#include "../include/painter.h"
 
 #define WIDTH 1920
 #define HEIGHT 1080
@@ -27,6 +28,8 @@ int main()
 		BeginDrawing();
 
 		ClearBackground(RAYWHITE);
+		drawSeperators(WIDTH, HEIGHT, 1);
+		drawWorld(world, rows, columns, CELLS_RES_RATIO);
 
 		EndDrawing();
 	}
