@@ -1,6 +1,6 @@
 #include "../include/util.h"
 
-#include <bits/time.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -25,17 +25,27 @@ void free2DArray(int** arr, int rows)
 
 void setRandomValues(int** arr, int rows, int columns)
 {
-    // Get current times with nanosecond
+    int random_val = 0;
+    /* Get current times with nanosecond */
     struct timespec ts;
     clock_gettime(CLOCK_REALTIME, &ts);
 
-    // Seed the random number with nanoseconds
+    /* Seed the random number with nanoseconds */
     srand((unsigned int)ts.tv_nsec);
 
-    // Change the array values
+    /* Change the array values */
     for(int i = 0; i < rows; i++) {
         for(int j = 0; j < columns; j++) {
-            arr[i][j] = rand() % 2;
+            random_val = rand() % 10;
+
+            /* Just for 0 to appear more */
+            if(random_val < 7)
+                random_val = 0;
+            else
+                random_val = 1;
+
+
+            arr[i][j] = random_val;
         }
     }
 }
