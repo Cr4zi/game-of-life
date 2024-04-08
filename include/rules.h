@@ -4,8 +4,8 @@
 
 int countNeighbours(int** world, int x, int y);
 
-void changeState(int** world, int x, int y);
+void changeState(int** world, int** next, int x, int y);
 
-void newGeneration(int** world, int rows, int columns);
+void newGeneration(int** world, int** next, int rows, int columns);
 
 #endif

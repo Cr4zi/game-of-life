@@ -3,7 +3,7 @@
 
 #include "raylib.h"
 
-Vector2 draw(int** world, int cell_size);
+void draw(int** world, int cell_size);
 
 
 #endif

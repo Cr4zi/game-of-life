@@ -1,4 +1,5 @@
 #include "../include/rules.h"
+#include <stdio.h>
 
 int countNeighbours(int** world, int x, int y)
 {
@@ -15,7 +16,7 @@ int countNeighbours(int** world, int x, int y)
     return sum;
 }
 
-void changeState(int** world, int x, int y)
+void changeState(int** world, int** next, int x, int y)
 {
     int currState = world[x][y];
 
@@ -25,21 +26,23 @@ void changeState(int** world, int x, int y)
 
     /* First and third rule if live cell with fewer than two live neibours or more than 3 live neighbours die */
     if(currState == 1 && (neighbours < 2 || neighbours > 3))
-        world[x][y] = 0;
+        next[x][y] = 0;
     /* Fourth rule any dead cell with exactly 3 live neighbours becomes a live cell */
     else if(currState == 0 && neighbours == 3)
-        world[x][y] = 1;
+        next[x][y] = 1;
+    else if (currState == 1 && (neighbours == 2 || neighbours == 3))
+        next[x][y] = 1;
 }
 
 
-void newGeneration(int** world, int rows, int columns)
+void newGeneration(int** world, int** next, int rows, int columns)
 {
     for(int i = 0; i < rows; i++) {
         for(int j = 0; j < columns; j++) {
             if(i == 0 || i == rows - 1 || j == 0 || j == -1)
-                world[i][j] = 0;
+                next[i][j] = 0;
             else
-                changeState(world, i, j);
+                changeState(world, next, i, j);
         }
     }
 

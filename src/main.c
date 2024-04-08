@@ -32,7 +32,6 @@ int main()
 	copyArrToArr(world, next, rows, columns);
 
 	int should_draw = 0;
-	Vector2 changed;
 
 	while(!WindowShouldClose()) {
 		BeginDrawing();
@@ -43,12 +42,13 @@ int main()
 		}
 
 		if (!should_draw) {
-			copyArrToArr(world, next, rows, columns);
-			newGeneration(next, rows, columns);
+			// copyArrToArr(world, next, rows, columns);
+			newGeneration(world, next, rows, columns);
 			copyArrToArr(next, world, rows, columns);
 
 		} else {
-			changed = draw(world, CELLS_RES_RATIO);
+			draw(world, CELLS_RES_RATIO);
+			copyArrToArr(world, next, rows, columns);
 		}
 
 		ClearBackground(RAYWHITE);
