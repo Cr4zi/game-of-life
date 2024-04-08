@@ -5,6 +5,7 @@
 #include "../include/util.h"
 #include "../include/painter.h"
 #include "../include/rules.h"
+#include "../include/drawing.h"
 
 #define WIDTH 1920
 #define HEIGHT 1080
@@ -30,16 +31,30 @@ int main()
 	int** next = make2DArray(rows, columns);
 	copyArrToArr(world, next, rows, columns);
 
+	int should_draw = 0;
+	Vector2 changed;
+
 	while(!WindowShouldClose()) {
 		BeginDrawing();
+
+		if(IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) {
+			if (should_draw) should_draw = 0;
+			else should_draw = 1;
+		}
+
+		if (!should_draw) {
+			copyArrToArr(world, next, rows, columns);
+			newGeneration(next, rows, columns);
+			copyArrToArr(next, world, rows, columns);
+
+		} else {
+			changed = draw(world, CELLS_RES_RATIO);
+		}
 
 		ClearBackground(RAYWHITE);
 		drawSeperators(WIDTH, HEIGHT, 1, CELLS_RES_RATIO);
 		drawWorld(world, rows, columns, CELLS_RES_RATIO);
 
-		newGeneration(next, rows, columns);
-		swapTwoArrays(world, next, rows, columns);
-		copyArrToArr(world, next, rows, columns);
 
 		EndDrawing();
 	}
